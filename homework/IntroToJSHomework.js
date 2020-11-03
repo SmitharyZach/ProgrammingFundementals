@@ -48,14 +48,15 @@ totalAmount(100, 'bad')
 
 function splitAMount(amount, serviceLevel, partySize){
     if (serviceLevel === "bad") {
-        multiplier = .1
-        console.log(((amount * multiplier) + amount) / partySize)
+        let splitBill = (((amount * multiplier) + amount) / partySize).toFixed(2)
+        console.log(splitBill)
     } else if (serviceLevel === "fair") {
         multiplier = .15
         console.log(((amount * multiplier) + amount) / partySize)
     } else {
         multiplier = .2
-        console.log(((amount * multiplier) + amount) / partySize)
+        let splitBill = (((amount * multiplier) + amount) / partySize).toFixed(2)
+        console.log(splitBill)
     }
 }
 
