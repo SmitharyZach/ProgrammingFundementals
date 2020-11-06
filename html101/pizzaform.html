@@ -27,14 +27,28 @@
                     <label for="mushroom">Mushroom</label>
                     <input type="checkbox" id="sundriedtomato" name="sundriedtomato" value="sundriedtomato">
                     <label for="sundriedtomato">Sun-dried Tomato</label>
-                <p></p><label for="crust-select">What type of crust do you prefer?!</label></p>
-                <select name="crust" id="crust-select"></select>
-                <option value="" disabled selected>Choose Wisely</option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
-                <option value=""></option>
+                <p><label for="crust-select">What type of crust do you prefer?!</label></p>
+                    <select name="crust" id="crust-select">
+                    <option value="" disabled selected>Choose Wisely</option>
+                    <option value="">Super Thin</option>
+                    <option value="">Thin</option>
+                    <option value="">Regular</option>
+                    <option value="">Deep Dish</option>
+                    <option value="">The Deepest of Dishes</option>
+            </select>
+            <p><label for="cookTime">How toasty do you want it?</label></p>
+            <input type="range" id="cookTime" min="0" max="60">
+            <p>Take out or To Go</p>
+                <input id="size" type="radio" name="Order">
+                <label for="size">Take Out</label>
+                <input id="size" type="radio" name="Order">
+                <label for="size">To Go</label>
+            <p><label for="address">address</label></p>
+                <input type="text" id="address">
+            <p><label for="name">Order Name</label>
+                <input type="text" id="name">
+            </p>
+            <input type="submit" id="submit-button" value="Order">
         </fieldset>
         </form>
     </body>
