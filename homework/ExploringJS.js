@@ -73,17 +73,12 @@ function positiveNumbers(yourArray){
 //positiveNumbers([1, -3, 5, -3, 0])
 
 function matrixAdd(array1, array2) {
-    let arrays = []
-    arrays.push(array1, array2)
 
-    for (let i = 0; i < arrays.length; i++) {
-        for (let j = 0; j < arrays[i].length; j++) {
-            console.log(arrays[i][j])
-        }        
-    }
 }
 
-//matrixAdd([[1, 3], [2, 4]], [[5, 2], [1, 0]])
+matrixAdd([[1, 3], [2, 4]], [[5, 2], [1, 0]])
+
+// [[6, 5], [3, 4]]
 
 function rockPaperScissors(player1, player2){
     if (player1 === player2) {
@@ -106,30 +101,28 @@ function rockPaperScissors(player1, player2){
 
 function ticTacToe(board){
 
-    let row0
-    let row1
-    let row2
-
+            let diagLeftO = (board[0][0] && board[1][0] && board[2][0] === '0')
+             if(diagLeftO) {
+            console.log('o wins!')
+             }
     for (let i = 0; i < board.length; i++) {
+
         for (let j = 0; j < board[i].length; j++) {
             let element = board[i][j]
-            console.log(element)
+            let diagLeftO = (board[0][0] && board[1][0] && board[2][0])
+            if(diagLeftO === '0') {
+                console.log('o wins!')
+                break
+            }
         }
-    }
+    } 
 }
 
 ticTacToe([
-    ['O', 'X', 'O'],
-    ['O', 'X', null],
-    [null, 'X', null]
-    ])
-
-// ticTacToe([
-//     ['O', 'O', 'O'],
-//     ['X', null, 'X'],
-//     [null, 'X', null]
-//     ])
-
+    ['0', null, null],
+    ['0', null, null],
+    ['0', null, null]
+])
 
 
 const add = (x,y) => {
@@ -291,12 +284,14 @@ const nameSortByLength = (names) => {
 // console.log(sorted)
 
 const fun = () => {
-    return 'Hello World!'
+    console.log('Hello World!')
 }
 
 function call3Times(fun) {
     fun()
+    fun()
+    fun()
 }
 
-let f = call3Times(fun)
-console.log(f)
+//let f = call3Times(fun)
+// console.log(f)
