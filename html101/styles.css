@@ -1,0 +1,35 @@
+.header {
+  overflow: auto;
+}
+
+.credentials {
+  float: right;
+  border: cornflowerblue 3px solid;
+  padding: 0px 50px 0px 50px;
+  text-align: center;
+}
+
+.logo {
+  float: left;
+}
+
+.logo2 {
+  float: left;
+  padding-left: 300px;
+}
+
+body {
+  background-color: bisque;
+}
+
+@media screen and (max-width: 500px) {
+  body {
+    background-color: green;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 1000px) {
+  body:hover {
+    background-color: black;
+  }
+}

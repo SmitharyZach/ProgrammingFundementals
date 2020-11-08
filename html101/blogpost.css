@@ -1,0 +1,18 @@
+body {
+  font-size: 18px;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.image-right {
+  float: right;
+  padding: 10px 0 10px 10px;
+}
+
+.image-left {
+  float: left;
+  padding: 10px 10px 10px 0px;
+}

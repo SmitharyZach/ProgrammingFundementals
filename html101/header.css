@@ -1,0 +1,23 @@
+.header {
+  overflow: auto;
+}
+
+.header-menu {
+  float: right;
+  list-style-type: none;
+}
+
+.header-menu > li {
+  float: left;
+  padding-right: 10px;
+}
+
+.sidebar {
+  float: right;
+  padding: 10px;
+}
+
+.container {
+  overflow: auto;
+  clear: both;
+}
