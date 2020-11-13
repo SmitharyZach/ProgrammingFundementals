@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  width: 900px;
+  flex-wrap: wrap;
+}
+
+.piece {
+  background-color: rgb(145, 20, 20);
+  border: solid black 1px;
+  width: 100px;
+  height: 100px;
+}
+.row {
+  display: flex;
+}
+
+.row:nth-child(odd) > .piece:nth-child(even) {
+  background-color: cyan;
+}
+
+.row:nth-child(even) > .piece:nth-child(odd) {
+  background-color: cyan;
+}
