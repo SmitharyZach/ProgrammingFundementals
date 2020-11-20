@@ -1,0 +1,46 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .header {
+        background-color: aqua;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .hero {
+        background-color: lightgray;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container"></div>
+  </body>
+  <script>
+    const container = document.getElementById("container");
+    const headerTag = document.createElement("div");
+    headerTag.className = "header";
+    const headerElement = document.createElement("h1");
+    headerElement.innerText = "High on Coding";
+    const navHomeLink = document.createElement("h2");
+    navHomeLink.innerText = "Home";
+    const navCatLink = document.createElement("h2");
+    navCatLink.innerText = "Categories";
+
+    container.append(headerTag);
+    headerTag.append(headerElement, navHomeLink, navCatLink);
+
+    const hero = document.createElement("div");
+    hero.className = "hero";
+    container.append(hero);
+    const heroHeader = document.createElement("h2");
+    heroHeader.innerText = "Curse of the Current Reviews";
+    const heroText = document.createElement("p");
+    heroText.innerText =
+      "when you buy any applicatino from itones you really have more choises than you can handl most of th eusers csoll fajsoijs foijw;aoijweoi f;aowiefja;owiejf a;owiefj aw;oefij aw;oeifj aw;oefij awo;iefj awe;ofijaw e;iofja ewiof;jawe f;oiaje ;o";
+
+    hero.append(heroHeader, heroText);
+  </script>
+</html>
