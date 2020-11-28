@@ -9,12 +9,7 @@ addButton.addEventListener("click", (event) => {
   input.value = "";
 });
 
-// removeButton.addEventListener("click", (event) => {
-//   if (event.target.id === "remove") {
-//     console.log("hi");
-//     event.target.remove();
-//   }
-// });
+
 
 function createListItem(item) {
   let listItem = document.createElement("li");
