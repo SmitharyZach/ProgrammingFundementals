@@ -1,5 +1,4 @@
 .board {
-  background-color: #b0b0b0;
   display: grid;
   grid-template-columns: repeat(3, 100px);
   grid-auto-rows: 100px;
@@ -35,4 +34,10 @@
   justify-content: center;
   align-items: center;
   font-size: large;
+}
+
+@media only screen and (max-width: 700px) {
+  .grid {
+    display: block;
+  }
 }

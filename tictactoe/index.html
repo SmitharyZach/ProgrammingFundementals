@@ -58,7 +58,10 @@
           document.getElementById("5").innerHTML === "x" &&
           document.getElementById("7").innerHTML === "x")
       ) {
-        document.getElementById("turn").innerHTML = "X WINS!!!!";
+        document.getElementById("turn").innerHTML =
+          "X WINS!!!! \n Refresh to play again!";
+        document.getElementsByClassName("grid")[0].style.backgroundColor =
+          "green";
         document.removeEventListener("click", gameListener);
       }
     }
@@ -90,7 +93,10 @@
           document.getElementById("5").innerHTML === "o" &&
           document.getElementById("7").innerHTML === "o")
       ) {
-        document.getElementById("turn").innerHTML = "O WINS!!!!";
+        document.getElementById("turn").innerHTML =
+          "O WINS!!!! \n Refresh to play again!";
+        document.getElementsByClassName("grid")[0].style.backgroundColor =
+          "green";
         document.removeEventListener("click", gameListener);
       }
     }
