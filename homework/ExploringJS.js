@@ -297,3 +297,42 @@ function call3Times(fun) {
 
 //let f = call3Times(fun)
 // console.log(f)
+
+function leetspeak(string) {
+  stringArray = string.split("");
+  for (let i = 0; i < stringArray.length; i++)
+    switch (stringArray[i]) {
+      case "a":
+      case "A":
+        stringArray[i] = "4";
+        break;
+      case "e":
+      case "E":
+        stringArray[i] = "3";
+        break;
+      case "g":
+      case "G":
+        stringArray[i] = "6";
+        break;
+      case "i":
+      case "I":
+        stringArray[i] = "1";
+        break;
+      case "o":
+      case "O":
+        stringArray[i] = "0";
+        break;
+      case "s":
+      case "S":
+        stringArray[i] = "5";
+        break;
+      case "t":
+      case "T":
+        stringArray[i] = "7";
+        break;
+    }
+  console.log(stringArray.join(""));
+}
+
+leetspeak("Leet");
+leetspeak("AaEeGgiItT");

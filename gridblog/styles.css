@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: thistle;
+  align-items: center;
+  position: sticky;
+  top: 0px;
+}
+
+body {
+  margin: 0px;
+}
+
+.headerlinks {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+h1 {
+  padding-left: 20px;
+}
+.headerlinks > li {
+  padding: 20px;
+  font-size: large;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.main {
+  grid-area: 1 / 1 / span 2 / span 2;
+}
+
+.side {
+  position: fixed;
+  right: 50px;
+}
+
+.footer {
+  background-color: thistle;
+  height: 50px;
+  width: 100%;
+  position: sticky;
+  bottom: 0px;
+  margin: 0;
+}

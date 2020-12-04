@@ -1,38 +1,96 @@
-'use strict';
+"use strict";
 
-const input = document.querySelector('#input'), // input/output button
- numbers = document.querySelectorAll('.numbers div'), // number buttons
-  operators = document.querySelectorAll('.operators div'), // operator buttons
-  result = document.querySelector('#result'), // equal button
-  clear = document.querySelector('#clear'); // clear button
+const input = document.querySelector("#input"), // input/output button
+  numbers = document.querySelectorAll(".numbers div"), // number buttons
+  operators = document.querySelectorAll(".operators div"), // operator buttons
+  result = document.querySelector("#result"), // equal button
+  clear = document.querySelector("#clear"); // clear button
 
 let resultDisplayed = false; // flag to keep an eye on what output is displayed
 
-let numbersArray = []
-let opperatorArray = []
+let numbersArray = [];
+let operatorArray = [];
+let temporarySring = "";
 
-document.addEventListener('click', (event) => {
-    if (event.target.innerHTML >= 0 || event.target.innerHTML < 10) {
-        let number = parseInt(event.target.innerHTML)
-        numbersArray.push(number)
-    }
-})
+function lastClickOperator(event) {
+  if (event.target.classList.contains("opp")) {
+    return true;
+  } else {
+    return false;
+  }
+}
 
-document.addEventListener('click', (event) => {
-    let operator = event.target.innerHTML
-    if (event.target.classList.contains('opp') && numbersArray.length === 0) {
-        alert('Please pick a number before an operator')
-    } else if (event.target.classList.contains('opp') && opperatorArray.includes(operator)) {
-        alert('You can not use the same operator twice')
+document.addEventListener("click", handleNumberClick, true);
+
+clear.addEventListener("click", clearCalculator);
+
+result.addEventListener("click", (event) => {
+  let result = calculate(numbersArray, operatorArray);
+  input.innerHTML = result;
+}),
+  false;
+
+document.addEventListener("click", (event) => {
+  let opp = event.target.innerHTML;
+  if (event.target.classList.contains("opp")) {
+    operatorArray.push(opp);
+    console.log(operatorArray);
+  }
+});
+
+function clearCalculator() {
+  numbersArray = [];
+  operatorArray = [];
+  input.innerHTML = "";
+}
+
+function handleNumberClick(event) {
+  let lastClick = lastClickOperator(event);
+  if (
+    !lastClick &&
+    (event.target.innerHTML >= 0 || event.target.innerHTML < 10)
+  ) {
+    temporarySring += event.target.innerHTML;
+  } else {
+    if (temporarySring === "") {
+      return;
     } else {
-        opperatorArray.push(operator)
+      numbersArray.push(parseInt(temporarySring));
+      temporarySring = "";
     }
-})
+  }
+}
 
-result.addEventListener('click' , (event) => {
+function calculate(numbers, operators) {
+  for (let i = 0; i < numbers.length; i += 2) {
+    let num1 = numbers[i];
+    let num2 = numbers[i + 1];
+    console.log("1 and 2", num1, num2);
+    for (let j = 0; j < operators.length; j++) {
+      const opp = operators[j];
+      let result = "";
+      switch (opp) {
+        case "+":
+          result += num1 + num2;
+          return result;
+        case "-":
+          result += num1 - num2;
+          return result;
+        case "*":
+          result += num1 * num2;
+          return result;
+        case "/":
+          result += num1 / num2;
+          return result;
+      }
+    }
+  }
+}
 
-})
 
-function calculate (operators, numbers) {
-    
+function calculate2 (numbers, operators) {
+
+    while (operators === '+')
+        
+
 }
