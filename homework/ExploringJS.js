@@ -121,11 +121,11 @@ function ticTacToe(board) {
   }
 }
 
-ticTacToe([
-  ["0", null, null],
-  ["0", null, null],
-  ["0", null, null],
-]);
+// ticTacToe([
+//   ["0", null, null],
+//   ["0", null, null],
+//   ["0", null, null],
+// ]);
 
 const add = (x, y) => {
   return x + y;
@@ -334,5 +334,112 @@ function leetspeak(string) {
   console.log(stringArray.join(""));
 }
 
-leetspeak("Leet");
-leetspeak("AaEeGgiItT");
+// leetspeak("Leet");
+// leetspeak("AaEeGgiItT");
+
+function ceaserCipherEasy(string, offset) {
+  let decoded = {
+    a: "n",
+    b: "o",
+    c: "p",
+    d: "q",
+    e: "r",
+    f: "s",
+    g: "t",
+    h: "u",
+    i: "v",
+    j: "w",
+    k: "x",
+    l: "y",
+    m: "z",
+    n: "a",
+    o: "b",
+    p: "c",
+    q: "d",
+    r: "e",
+    s: "f",
+    t: "g",
+    u: "h",
+    v: "i",
+    w: "j",
+    x: "k",
+    y: "l",
+    z: "m",
+  };
+  str = string.toLowerCase();
+  let decipher = "";
+
+  for (let i = 0; i < str.length; i++) {
+    decipher += decoded[str[i]];
+  }
+  console.log(decipher);
+}
+
+ceaserCipherEasy("attackatonce");
+
+function isUpperCase(str) {
+  return str === str.toUpperCase();
+}
+
+let ceaserCipherMed = (str, offset) => {
+  let decipher = "";
+
+  for (let i = 0; i < str.length; i++) {
+    // if letter is uppercase then add uppercase letters
+    if (isUpperCase(str[i])) {
+      decipher;
+    }
+  }
+};
+
+const stringSplit = (str) => {
+  return str.split(" ");
+};
+
+const capitalizeWord = (word) => {
+  return word[0].toUpperCase() + word.slice(1, word.length);
+};
+
+const stringJoin = (str) => {
+  return str.join(" ");
+};
+
+let emphasize = (str) => {
+  let arrayOfWords = stringSplit(str);
+  let newArry = [];
+  console.log(
+    arrayOfWords.forEach((word) => {
+      newArry.push(capitalizeWord(word));
+    })
+  );
+  let finalString = stringJoin(newArry);
+  return finalString;
+};
+
+// console.log(emphasize("hello world"));
+
+// filterArray;
+
+// isNumber;
+
+const isNumber = (value) => {
+  if (typeof value === "number") {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const filterArray = (arr) => {
+  let filteredArray = [];
+
+  arr.forEach((el) => {
+    if (isNumber(el)) {
+      filteredArray.push(el);
+    }
+  });
+
+  return filteredArray;
+};
+
+console.log(filterArray([1, 2, "a", "b"]));
