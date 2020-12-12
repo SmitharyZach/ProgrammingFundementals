@@ -1,0 +1,41 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+      div {
+        width: 500px;
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Ajax Example</h1>
+    <button id="dogButton">Generate Doggo</button>
+    <div id="dogContainer"><img id="dogImage" alt="Doggo" /></div>
+  </body>
+  <script>
+    const button = document.getElementById("dogButton");
+    const dogContainer = document.getElementById("dogContainer");
+    const dogImage = document.getElementById("dogImage");
+    console.log(dogImage.src);
+    if (!dogImage.src) {
+      dogContainer.style.display = "none";
+    }
+    button.addEventListener("click", getDog);
+
+    function getDog() {
+      button.innerHTML = "Generating image...";
+      axios
+        .get("https://dog.ceo/api/breeds/image/random")
+        .then(function (response) {
+          console.log(response.data.message);
+          dogImage.src = response.data.message;
+          dogContainer.style.display = "block";
+          button.innerHTML = "Doggo generated";
+        });
+    }
+  </script>
+</html>

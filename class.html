@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div id="transactionContainer" class="row"></div>
+    </div>
+    <script>
+      function renderTransaction(transaction) {
+        return `
+      <div class='transaction card col-3 m-2 mx-auto' style="width: 18rem;" data-id='${
+        transaction.id
+      }' >
+      <div class="card-body"> 
+        <h1 class='card-title'>To: ${transaction.to}</h1>
+        <h2 class='card-subtitle mb-2 text-muted'>From: ${transaction.from}</h2>
+        <span>Date: ${transaction.date}</span>
+        <b>$${transaction.amount}</b>
+        <br />
+        ${renderMessage(transaction.message)}
+        </div>
+      </div>
+      `;
+      }
+
+      function renderMessage(message) {
+        if (message) {
+          return `<p>${message}</p>`;
+        }
+        return "";
+      }
+
+      function renderTransactions(transactions) {
+        var render = "";
+
+        transactions.forEach(function (transaction) {
+          render += renderTransaction(transaction);
+        });
+        console.log(render);
+        return render;
+      }
+
+      var transactionContainer = document.getElementById(
+        "transactionContainer"
+      );
+
+      var transactions = [
+        {
+          id: 24,
+          date: "December 12, 2020",
+          amount: 34.53,
+          to: "Kamilah",
+          from: "Juan",
+          message: "Money for cooking with princesses",
+        },
+        {
+          id: 25,
+          date: "December 3, 2020",
+          amount: 42.0,
+          to: "Kamilah",
+          from: "Juan",
+        },
+        {
+          id: 26,
+          date: "December 20, 2020",
+          amount: 60.53,
+          to: "Kamilah",
+          from: "Juan",
+        },
+      ];
+
+      transactionContainer.innerHTML = renderTransactions(transactions);
+    </script>
+  </body>
+</html>
