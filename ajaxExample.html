@@ -5,7 +5,7 @@
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
-      div {
+      #dogContainer {
         width: 500px;
         height: 500px;
       }
@@ -13,6 +13,10 @@
   </head>
   <body>
     <h1>Ajax Example</h1>
+    <div>
+      <label for="breedSelect">Select Breed</label>
+      <select name="breed" id="breedSelect"></select>
+    </div>
     <button id="dogButton">Generate Doggo</button>
     <div id="dogContainer"><img id="dogImage" alt="Doggo" /></div>
   </body>
@@ -20,11 +24,31 @@
     const button = document.getElementById("dogButton");
     const dogContainer = document.getElementById("dogContainer");
     const dogImage = document.getElementById("dogImage");
+    const breedSelect = document.getElementById("breedSelect");
+    axios.get("https://dog.ceo/api/breeds/list").then(function (response) {
+      let breedArray = response.data.message;
+      breedArray.forEach((breed) => {
+        let option = document.createElement("option");
+        option.value = breed;
+        option.text = breed;
+        breedSelect.add(option);
+      });
+    });
     console.log(dogImage.src);
     if (!dogImage.src) {
       dogContainer.style.display = "none";
     }
     button.addEventListener("click", getDog);
+
+    breedSelect.addEventListener("change", function () {
+      axios
+        .get(`https://dog.ceo/api/breed/${this.value}/images/random`)
+        .then(function (response) {
+          dogImage.src = response.data.message;
+          dogContainer.style.display = "block";
+          button.innerHTML = "Doggo generated";
+        });
+    });
 
     function getDog() {
       button.innerHTML = "Generating image...";

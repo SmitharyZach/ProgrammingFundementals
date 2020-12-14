@@ -1,0 +1,37 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <h1>Enter your Zip Code for some weather</h1>
+
+    <label for="zipCode">Enter Zip Code</label>
+    <input type="text" id="zipCode" />
+    <button id="weatherButton">Search</button>
+    <div id="weatherResult"></div>
+  </body>
+  <script>
+    const apiKey = "b548fb7745903d5c6f4d57c11d5f2b19";
+    const input = document.getElementById("zipCode");
+    const button = document.getElementById("weatherButton");
+    const weatherResult = document.getElementById("weatherResult");
+
+    button.addEventListener("click", function () {
+      axios
+        .get(
+          `http://api.openweathermap.org/data/2.5/weather?zip=${input.value}&units=imperial&appid=${apiKey}`
+        )
+        .then(function (response) {
+          console.log(response.data);
+          weatherResult.innerHTML += `<h1>Weather for ${response.data.name}</h1>`;
+          weatherResult.innerHTML += `<p>Feels like: ${response.data.main.feels_like}</p>`;
+          weatherResult.innerHTML += `<p>High: ${response.data.main.temp_max}</p>`;
+          weatherResult.innerHTML += `<p>Low: ${response.data.main.temp_min}</p>`;
+          weatherResult.innerHTML += `<p>Conditions: ${response.data.weather[0].description}</p>`;
+        });
+    });
+  </script>
+</html>
