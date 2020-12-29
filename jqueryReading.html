@@ -1,0 +1,98 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <script>
+      $(document).ready(() => {
+        console.log("gtg!");
+        const $container = $("<div>");
+        const $title = $("<h1>", {
+          text: "Dad Jokes",
+        });
+        const $jokeButton = $("<button>", {
+          text: "Click for a new joke 😂",
+        });
+        const $jokeForm = $("<form>");
+        const $jokeInput = $("<input>", {
+          placeholder: "Enter search term",
+        });
+        const $submitButton = $("<button>", {
+          type: "submit",
+          value: "😂 Search!",
+          text: "😂 Search!",
+        });
+
+        $container.append($title);
+        $(document.body).append($container);
+        $jokeButton.appendTo($container);
+        $title.css("color", "tomato");
+        $jokeForm
+          .append($jokeInput)
+          .append($submitButton)
+          .appendTo(document.body)
+          .on("submit", (event) => {
+            event.preventDefault();
+            const term = $jokeInput.val();
+            searchJoke(term).then((jokesArray) => {
+              $(jokesArray).each((index, joke) => {
+                $("<p>", {
+                  text: joke,
+                  class: "joke-result",
+                }).appendTo(document.body);
+              });
+            });
+          });
+        $(document.body).on("click", ".joke-result", (event) => {
+          $(event.target).remove();
+        });
+        $jokeButton.on("click", (event) => {
+          getJoke().then((joke) => {
+            $(".joke").remove();
+            $("<p>", {
+              text: joke,
+            })
+              .hide()
+              .addClass("joke")
+              .appendTo($container)
+              .fadeIn();
+          });
+        });
+
+        function getJoke() {
+          return $.ajax({
+            url: "https://icanhazdadjoke.com/",
+            headers: {
+              Accept: "application/json",
+            },
+          })
+            .then((res) => {
+              return res.joke;
+            })
+            .catch((err) => {
+              return "There was an error";
+            });
+        }
+
+        function searchJoke(term) {
+          return $.ajax({
+            url: `https://icanhazdadjoke.com/search?term=${term}`,
+            headers: {
+              Accept: "application/json",
+            },
+          })
+            .then((res) => {
+              return res.results.map((result) => result.joke);
+            })
+            .catch((err) => {
+              console.log(err);
+              return "Error, something when wrong";
+            });
+        }
+      });
+    </script>
+  </body>
+</html>

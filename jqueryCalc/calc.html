@@ -1,0 +1,278 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+    <style>
+      body {
+        font-size: 16px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+          "Segoe UI Symbol";
+      }
+
+      p {
+        display: block;
+        margin: 2em auto;
+      }
+
+      .u-center {
+        text-align: center;
+      }
+
+      .wrapper {
+        max-width: 960px;
+        margin: 4% auto;
+        width: 100%;
+      }
+
+      .calculator {
+        border-radius: 1px;
+        box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+        font-size: 1.8rem;
+        letter-spacing: 5px;
+        margin: 0 auto;
+        padding: 20px;
+        -webkit-box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.2);
+        width: 29rem;
+      }
+
+      .input {
+        border: 1px solid #ddd;
+        border-radius: 1px;
+        font-size: 2.5rem;
+        height: 60px;
+        margin-right: 6px;
+        overflow-x: auto;
+        padding-right: 1rem;
+        padding-top: 10px;
+        text-align: right;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .input:hover {
+        border: 1px solid #bbb;
+        -webkit-box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: inset 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+      }
+
+      .operators div {
+        display: inline-block;
+        border: 1px solid #bbb;
+        border-radius: 1px;
+        width: 80px;
+        text-align: center;
+        padding: 10px;
+        margin: 20px 4px 10px 0;
+        cursor: pointer;
+        background-color: #ddd;
+        transition: border-color 0.2s ease-in-out, background-color 0.2s,
+          box-shadow 0.2s;
+      }
+
+      .operators div:hover {
+        background-color: #ddd;
+        -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+        border-color: #aaa;
+      }
+
+      .operators div:active {
+        font-weight: bold;
+      }
+
+      .leftPanel {
+        display: inline-block;
+      }
+
+      .numbers div {
+        display: inline-block;
+        border: 1px solid #ddd;
+        border-radius: 1px;
+        width: 80px;
+        text-align: center;
+        padding: 10px;
+        margin: 10px 4px 10px 0;
+        cursor: pointer;
+        background-color: #f9f9f9;
+        transition: border-color 0.2s ease-in-out, background-color 0.2s,
+          box-shadow 0.2s;
+      }
+      .clear {
+        display: inline-block;
+        border: 1px solid #ddd;
+        border-radius: 1px;
+        width: 80px;
+        text-align: center;
+        padding: 10px;
+        margin: 10px 4px 10px 0;
+        cursor: pointer;
+        background-color: #f9f9f9;
+        transition: border-color 0.2s ease-in-out, background-color 0.2s,
+          box-shadow 0.2s;
+      }
+
+      .numbers div:hover {
+        background-color: #f1f1f1;
+        -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+        border-color: #bbb;
+      }
+
+      .numbers div:active {
+        font-weight: bold;
+      }
+
+      .equal {
+        display: inline-block;
+        border: 1px solid #3079ed;
+        border-radius: 1px;
+        width: 17%;
+        text-align: center;
+        padding: 127px 10px;
+        margin: 10px 6px 10px 0;
+        vertical-align: top;
+        cursor: pointer;
+        color: #fff;
+        background-color: #4d90fe;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .equal:hover {
+        background-color: #307cf9;
+        -webkit-box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
+        border-color: #1857bb;
+      }
+
+      .equal:active {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="calculator">
+        <div class="input" id="input"></div>
+        <div class="buttons">
+          <div class="operators">
+            <div>+</div>
+            <div>-</div>
+            <div>*</div>
+            <div>/</div>
+          </div>
+          <div class="leftPanel">
+            <div class="numbers">
+              <div>7</div>
+              <div>8</div>
+              <div>9</div>
+            </div>
+            <div class="numbers">
+              <div>4</div>
+              <div>5</div>
+              <div>6</div>
+            </div>
+            <div class="numbers">
+              <div>1</div>
+              <div>2</div>
+              <div>3</div>
+            </div>
+            <div class="numbers">
+              <div>0</div>
+              <div>.</div>
+            </div>
+            <div id="clear" class="clear">C</div>
+          </div>
+          <div class="equal" id="result">=</div>
+        </div>
+      </div>
+      <p class="u-center">
+        Originally forked from:
+        <a href="https://codepen.io/lalwanivikas/pen/eZxjqo"
+          >https://codepen.io/lalwanivikas/pen/eZxjqo</a
+        >
+      </p>
+    </div>
+    <script>
+      let arrayOfNumberStrings = [];
+      let oppArray = [];
+      let tempArray = [];
+      let tempString = "";
+      const input = $("#input");
+      const buttons = $(".numbers").children();
+      const opperators = $(".operators").children();
+      const $alert = $("<h1>");
+
+      buttons.click((event) => {
+        $(".alert").remove();
+        tempString += event.target.innerHTML;
+        input.text(tempString);
+      });
+
+      opperators.click((event) => {
+        if (tempString === "") {
+          $alert
+            .html("Please pick a number first")
+            .addClass("alert")
+            .prependTo($(document.body));
+        } else {
+          arrayOfNumberStrings.push(tempString);
+          tempString = "";
+          oppArray.push(event.target.innerHTML);
+        }
+      });
+      $("#result").click(() => calculate(arrayOfNumberStrings, oppArray));
+      $("#clear").click(clearAll);
+
+      function convertArrayFromStringToInteger(arrayOfNumberStrings) {
+        let result = [];
+        arrayOfNumberStrings.forEach((element) => {
+          result.push(parseInt(element));
+        });
+        return result;
+      }
+
+      function clearAll() {
+        arrayOfNumberStrings = [];
+        oppArray = [];
+        tempArray = [];
+        input.html("");
+        inputLine = "";
+      }
+
+      function calculate(arrayOfNumberStrings, oppArray) {
+        let numbersArray = [];
+        let answer = "";
+        arrayOfNumberStrings.push(tempString);
+        tempString = "";
+        numbersArray = convertArrayFromStringToInteger(arrayOfNumberStrings);
+        let num1 = numbersArray[0];
+        let num2 = numbersArray[1];
+        console.log(num1, num2);
+        console.log(oppArray);
+
+        switch (oppArray[0]) {
+          case "+":
+            answer = num1 + num2;
+            break;
+          case "-":
+            answer = num1 - num2;
+            break;
+          case "*":
+            answer = num1 * num2;
+            break;
+          case "/":
+            answer = num1 / num2;
+            break;
+        }
+
+        input.text(answer);
+        arrayOfNumberStrings = [];
+        arrayOfNumberStrings.push(answer);
+        console.log(arrayOfNumberStrings);
+        tempString = answer;
+      }
+    </script>
+  </body>
+</html>
