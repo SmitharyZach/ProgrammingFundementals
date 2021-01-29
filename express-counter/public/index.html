@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Counter</title>
+  </head>
+  <body>
+    <h1>Counter Value:</h1>
+    <h1 id="counter"></h1>
+    <button id="increase">Increase</button
+    ><button id="decrease">Decrease</button>
+    <script>
+      var counter = document.getElementById("counter");
+      var increaseButton = document.getElementById("increase");
+      var decreaseButton = document.getElementById("decrease");
+      console.log(counter);
+      fetch("/value")
+        .then((response) => response.json())
+        .then((data) => {
+          counter.innerHTML = data;
+        });
+
+      increaseButton.addEventListener("click", () => {
+        console.log("clicked increase");
+        fetch("/increment", {
+          method: "POST",
+        })
+          .then((response) => response.json())
+          .then((data) => (counter.innerHTML = data));
+      });
+      decreaseButton.addEventListener("click", () => {
+        console.log("clicked decrease");
+        fetch("/decrement", {
+          method: "POST",
+        })
+          .then((response) => response.json())
+          .then((data) => (counter.innerHTML = data));
+      });
+    </script>
+  </body>
+</html>
